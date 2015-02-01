@@ -1,5 +1,3 @@
-# Borrowed from https://github.com/vvlad/dockerfiles-postgresql-9.3
-#
 # First run:
 #     $ docker build -t postgresql -rm=true .
 #     $ docker run --name "db" postgresql
