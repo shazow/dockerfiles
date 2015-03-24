@@ -4,7 +4,7 @@
 #     $ docker start db
 #
 # To try it out:
-#     $ docker run --rm -it --link db:db postgresql sh -c 'psql --host=$DB_PORT_5432_TCP_ADDR -U postgres db'
+#     $ docker run --rm --it --volumes-from db postgresql psql -U postgres
 
 FROM debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
