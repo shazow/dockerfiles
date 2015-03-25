@@ -1,26 +1,6 @@
 # ZNC with buildmod enabled.
 #
-# Build the image and create data container:
-#   $ docker build -t znc --rm .
-#   $ docker create -v $PWD/znc:/home/znc/.znc --name=znc-data znc
-#
-# Generate PEM and config, alternatively popular znc directory as if it were ~/.znc:
-#   $ docker run --rm --volumes-from=znc-data znc:latest znc --makepem
-#   $ docker run --rm --volumes-from=znc-data -it znc:latest znc --makeconf
-#
-# Build modules (optional):
-#   $ mkdir znc/src
-#   $ git clone https://github.com/jreese/znc-push znc/src/znc-push
-#   $ docker run --rm --volumes-from=znc-data znc:latest znc-buildmod .znc/src/znc-push/push.cpp
-#   Building ".znc/src/znc-push/push.so" for ZNC 1.4... [ ok ]
-#
-# Run:
-#   $ docker run --detach --restart=always --name znc --volumes-from=znc-data --publish 7000:7000 znc:latest
-#
-#
-# TODO: We could make a more stripped-down znc docker if we separate the
-# znc-buildmod into a separate image.
-#
+# (See README.md for instructions.)
 
 FROM debian:jessie
 MAINTAINER Andrey Petrov <andrey.petrov@shazow.net>
