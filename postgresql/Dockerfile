@@ -1,11 +1,3 @@
-# First run:
-#     $ docker build -t postgresql -rm=true .
-#     $ docker run --name "db" postgresql
-#     $ docker start db
-#
-# To try it out:
-#     $ docker run --rm --it --volumes-from db postgresql psql -U postgres
-
 FROM debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
 
@@ -30,5 +22,5 @@ RUN apt-get install -y \
 ADD init.sh /init.sh
 
 EXPOSE  5432
-VOLUME  ["/var/lib/postgresql", "/etc/postgresql", "/var/run/postgresql"]
+VOLUME  ["/var/lib/postgresql", "/var/run/postgresql"]
 CMD     ["/init.sh"]
