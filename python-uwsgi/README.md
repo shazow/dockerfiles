@@ -16,8 +16,10 @@ working dir to `/app/src` and run:
 
 ```shell
 python setup.py develop
-make -e "INI_FILE=production.ini"
-uwsgi --ini-paste production.ini
+make "INI_FILE=$INI_FILE"
+uwsgi --ini-paste "$INI_FILE"
 ```
+
+Typically I set `INI_FILE=production.ini` in the env.
 
 See `init.sh`.
