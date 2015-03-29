@@ -1,10 +1,6 @@
-# uWSGI + Python
+# uWSGI + Python + extras
 #
-# uWSGI reads its configuration from /app/src/production.ini.
-#
-# First run:
-#     $ docker build -t "python-uwsgi" --rm=true .
-#     $ docker run --name "app" -v "path/to/src:/app/src" -v "path/to/socks:/app/socks" python-uwsgi
+# (See README.md for instructions)
 
 FROM       debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
@@ -24,5 +20,5 @@ RUN pip install virtualenv
 
 ADD init.sh /init.sh
 
-VOLUME  ["/app/src", "/app/env", "/app/socks"]
+VOLUME  ["/app/src", "/app/env"]
 CMD     ["/init.sh"]
