@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y  \
 RUN pip install virtualenv
 
 ADD init /init
+WORKDIR /app
 
 VOLUME  ["/app/src", "/app/env"]
 CMD     ["/init"]
