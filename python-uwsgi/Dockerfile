@@ -25,6 +25,5 @@ USER app
 WORKDIR /home/app
 RUN virtualenv --system-site-packages env
 
-VOLUME ["/home/app/src", "/home/app/env"]
-
-CMD /init
+VOLUME  ["/home/app/src", "/home/app/env"]
+CMD     ["/init"]

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-whoami
-
 . env/bin/activate
 
 if [[ ! "$INI_FILE" ]]; then
