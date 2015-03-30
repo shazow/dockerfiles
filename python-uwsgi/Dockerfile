@@ -23,6 +23,7 @@ ADD init /init
 RUN useradd --create-home app
 USER app
 WORKDIR /home/app
+RUN virtualenv --system-site-packages env
 
-VOLUME  ["/home/app/src"]
+VOLUME  ["/home/app/src", "/home/app/env"]
 CMD     ["/init"]

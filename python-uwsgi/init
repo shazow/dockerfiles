@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/bin/bash
+
+. env/bin/activate
 
 if [[ ! "$INI_FILE" ]]; then
     INI_FILE="production.ini";
 fi
 
-virtualenv --system-site-packages env
-. env/bin/activate
-
 cd src
 python setup.py develop
 make INI_FILE="$INI_FILE"
-uwsgi --ini-paste "$INI_FILE"
+uwsgi --ini "$INI_FILE"
