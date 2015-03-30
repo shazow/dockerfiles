@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y  \
 
 RUN pip install virtualenv
 
-ADD init.sh /init.sh
+ADD init /init
 
 VOLUME  ["/app/src", "/app/env"]
-CMD     ["/init.sh"]
+CMD     ["/init"]
