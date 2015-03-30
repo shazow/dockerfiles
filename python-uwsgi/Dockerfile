@@ -24,5 +24,5 @@ RUN useradd --create-home app
 USER app
 WORKDIR /home/app
 
-VOLUME  ["/home/app/src", "/home/app/env"]
+VOLUME  ["/home/app/src"]
 CMD     ["/init"]

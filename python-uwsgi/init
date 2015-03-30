@@ -4,7 +4,6 @@ if [[ ! "$INI_FILE" ]]; then
     INI_FILE="production.ini";
 fi
 
-pip install uwsgi PasteDeploy
 virtualenv --system-site-packages env
 . env/bin/activate
 
