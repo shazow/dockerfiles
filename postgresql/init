@@ -26,7 +26,6 @@ EOF
     pg_ctlcluster ${PG_VERSION} main stop
 
     echo "* Credentials: url=\"postgresql://postgres:${password}@${IP_ADDRESS}/$CREATE_DB\""
-    exit 0
 fi
 
 su postgres -c "$POSTGRES_BIN -c config_file=\"$POSTGRES_CONFIG\" -c listen_addresses='*'"

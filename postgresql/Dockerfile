@@ -19,8 +19,8 @@ RUN apt-get install -y \
     && rm -rf /var/lib/apt/lists/* \
     && pg_dropcluster $PG_VERSION main --stop
 
-ADD init.sh /init.sh
+ADD init /init
 
 EXPOSE  5432
 VOLUME  ["/var/lib/postgresql", "/var/run/postgresql"]
-CMD     ["/init.sh"]
+CMD     ["/init"]
