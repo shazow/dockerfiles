@@ -1,0 +1,54 @@
+#!/bin/bash
+# Simple backup script that can be used in a cron. Example:
+# $ CONTAINER=db KEEP=5 ./backup db
+#
+
+
+backup() {
+    declare container="$1" database="$2" path="$3"
+    docker exec "$container" pg_dump "$database" | gzip > "$backup_file"
+}
+
+cleanup() {
+    declare path="$1" keep="$2"
+
+    # Delete stale backups?
+    num_backups="$(ls ${path}*.sql.gz 2> /dev/null | wc -l)"
+    if [[ "$num_backups" -le "$keep" ]]; then
+        return 0
+    fi
+
+    num_to_delete="$((num_backups-NUM_OLD_BACKUPS))"
+    ls -t -- ${path}* | tail -n $num_to_delete | xargs rm
+}
+
+main() {
+    set -eo pipefail
+
+    if [[ "$CONTAINER" ]]; then
+        echo "Set CONTAINER environment variable."
+        exit -1
+    fi
+
+    local database="$1"
+    if [ -z "$database" ]; then
+        echo "Which database do you want to back up?"
+        exit -2
+    fi;
+
+    local title="${database}_$(date -I)"
+    local backup_file="${title}.sql.gz"
+
+    local num="$(ls $title*.sql.gz 2> /dev/null | wc -l)"
+    if [[ "$num" != "0" ]]; then
+        backup_file="${title}.${num}.sql.gz"
+    fi
+
+    backup "$CONTAINER" "$database" "$backup_file"
+
+    if "$KEEP"; then
+        cleanup "$database" "$KEEP"
+    fi
+}
+
+[[ "$0" == "$BASH_SOURCE" ]] && main "$@"
