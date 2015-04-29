@@ -6,7 +6,10 @@
 $ docker run -d --name "db" shazow/postgresql
 ```
 
-To try it out:
+The default context inside the docker is the `postgres` user and local
+permissions are trusted for this user so you can run exec commands conveniently.
+
+Try it out:
 
 ```shell
 $ docker exec -it db psql
@@ -19,4 +22,10 @@ $ docker exec db /init
 ALTER ROLE
 CREATE DATABASE
 * Credentials: url="postgresql://postgres:XXX@172.17.0.32/db"
+```
+
+Backup script:
+
+```shell
+$ docker exec db pg_dump db > dump.sql
 ```
