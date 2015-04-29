@@ -16,11 +16,14 @@ RUN apt-get install -y \
     postgresql-$PG_VERSION \
     postgresql-contrib-$PG_VERSION \
     --no-install-recommends \
-    && rm -rf /var/lib/apt/lists/* \
-    && pg_dropcluster $PG_VERSION main --stop
+    && rm -rf /var/lib/apt/lists/*
 
-ADD init /init
+COPY init /init
+COPY start /start
+
+USER postgres
+COPY pg_hba.conf /etc/postgresql/$PG_VERSION/main/pg_hba.conf
 
 EXPOSE  5432
 VOLUME  ["/var/lib/postgresql", "/var/run/postgresql"]
-CMD     ["/init"]
+CMD     ["/start"]

@@ -1,0 +1,2 @@
+#!/bin/sh
+pg_ctlcluster $PG_VERSION main start --foreground --options "-c listen_addresses='*'"
