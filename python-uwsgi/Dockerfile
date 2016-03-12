@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y  \
     libfreetype6-dev \
     libjpeg-dev \
     libpng12-dev \
+    libxml2-dev \
     --no-install-recommends
 
 RUN pip install virtualenv uwsgi
