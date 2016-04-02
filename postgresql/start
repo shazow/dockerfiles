@@ -1,2 +1,6 @@
 #!/bin/sh
+if [[ ! -d "/var/lib/postgresql/${PG_VERSION}/main" ]]; then
+    /init
+fi
+
 pg_ctlcluster $PG_VERSION main start --foreground --options "-c listen_addresses='*'"

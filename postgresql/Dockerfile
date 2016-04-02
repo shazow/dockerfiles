@@ -1,7 +1,8 @@
 FROM debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
 
-RUN apt-get update && apt-get install -y  \
+RUN apt-get update
+RUN apt-get install -y \
     locales \
     --no-install-recommends
 
