@@ -18,7 +18,8 @@ RUN apt-get install -y \
     libpng12-dev \
     libxml2-dev \
     libxslt1-dev \
-    --no-install-recommends
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN pip install -U pip setuptools && pip install -U virtualenv uwsgi
 ADD init /init
