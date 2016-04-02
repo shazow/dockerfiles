@@ -5,20 +5,22 @@
 FROM       debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
 
-RUN apt-get update && apt-get install -y  \
+RUN apt-get update
+RUN apt-get install -y \
     build-essential \
     wget \
     make \
     python-dev \
     python-pip \
     python-psycopg2 \
-    python-lxml \
     libfreetype6-dev \
     libjpeg-dev \
     libpng12-dev \
+    libxml2-dev \
+    libxslt1-dev \
     --no-install-recommends
 
-RUN pip install virtualenv uwsgi
+RUN pip install -U pip setuptools && pip install -U virtualenv uwsgi
 ADD init /init
 
 # Setup app user.
