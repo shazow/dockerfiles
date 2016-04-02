@@ -29,5 +29,6 @@ USER app
 WORKDIR /home/app
 RUN virtualenv --system-site-packages env
 
+EXPOSE  3031
 VOLUME  ["/home/app/src", "/home/app/env"]
 CMD     ["/init"]

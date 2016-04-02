@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ ! -d "/var/lib/postgresql/${PG_VERSION}/main" ]]; then
+if [ ! -d "/var/lib/postgresql/${PG_VERSION}/main" ]; then
     /init
 fi
 
