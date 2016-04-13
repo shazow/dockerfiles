@@ -28,7 +28,7 @@ ADD init /init
 RUN useradd --create-home app
 USER app
 WORKDIR /home/app
-RUN virtualenv --system-site-packages env
+RUN virtualenv /home/app/env
 
 EXPOSE  3031
 VOLUME  ["/home/app/src", "/home/app/env"]
