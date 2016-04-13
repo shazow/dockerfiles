@@ -13,6 +13,7 @@ RUN apt-get install -y \
     python-dev \
     python-pip \
     python-psycopg2 \
+    python-lxml \
     libfreetype6-dev \
     libjpeg-dev \
     libpng12-dev \
