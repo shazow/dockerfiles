@@ -1,5 +1,6 @@
 #!/bin/sh
 if [ ! -d "/var/lib/postgresql/${PG_VERSION}/main" ]; then
+    pg_dropcluster ${PG_VERSION} main
     pg_createcluster ${PG_VERSION} main
 fi
 
