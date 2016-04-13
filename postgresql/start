@@ -2,6 +2,9 @@
 if [ ! -d "/var/lib/postgresql/${PG_VERSION}/main" ]; then
     pg_dropcluster ${PG_VERSION} main
     pg_createcluster ${PG_VERSION} main
+
+    # Allow connections from all hosts. We restrict access through Docker's networking constraints.
+    echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/${PG_VERSION}/main/pg_hba.conf
 fi
 
 pg_ctlcluster $PG_VERSION main start --foreground --options "-c listen_addresses='*'"

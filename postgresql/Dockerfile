@@ -23,7 +23,6 @@ COPY init /init
 COPY start /start
 
 USER postgres
-COPY pg_hba.conf /etc/postgresql/$PG_VERSION/main/pg_hba.conf
 
 EXPOSE  5432
 VOLUME  ["/var/lib/postgresql", "/var/run/postgresql"]
