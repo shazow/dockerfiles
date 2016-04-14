@@ -1,10 +1,12 @@
 #!/bin/bash
 
-if [[ ! -f env/bin/activate ]]; then
+if [[ -f env/bin/activate ]]; then
+    . env/bin/activate
+else
     virtualenv --system-site-packages env
+    . env/bin/activate
+    easy_install -U pip
 fi
-
-. env/bin/activate
 
 if [[ ! "$INI_FILE" ]]; then
     INI_FILE="production.ini";
