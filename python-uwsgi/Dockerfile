@@ -5,7 +5,7 @@
 FROM       debian:jessie
 MAINTAINER Andrey Petrov "andrey.petrov@shazow.net"
 
-RUN apt-get update
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y \
     build-essential \
     wget \
