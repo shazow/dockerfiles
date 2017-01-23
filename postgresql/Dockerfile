@@ -7,7 +7,7 @@ RUN apt-get install -y \
     --no-install-recommends
 
 # Add PostgreSQL debian package repo.
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg" > /etc/apt/sources.list.d/pgdg.list \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
     && wget --quiet -O - "https://www.postgresql.org/media/keys/ACCC4CF8.asc" | apt-key add - \
     && apt-get update \
     && apt-get upgrade -y
