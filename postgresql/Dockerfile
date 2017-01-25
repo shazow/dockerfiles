@@ -20,8 +20,9 @@ ENV LC_ALL en_US.UTF-8
 ENV PG_VERSION 9.6
 
 RUN apt-get install -y \
-    postgresql-$PG_VERSION \
-    postgresql-contrib-$PG_VERSION \
+    postgresql-${PG_VERSION} \
+    postgresql-contrib-${PG_VERSION} \
+    postgresql-$PPG_VERSION}-postgis-2.3
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 

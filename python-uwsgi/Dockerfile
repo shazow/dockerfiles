@@ -19,6 +19,7 @@ RUN apt-get install -y \
     libpng12-dev \
     libxml2-dev \
     libxslt1-dev \
+    binutils libproj-dev gdal-bin \
     --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
